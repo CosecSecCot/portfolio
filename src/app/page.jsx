@@ -9,13 +9,14 @@ export default async function Home() {
           <Logo />
           <div className="grid md:grid-cols-3 grid-cols-2 gap-8 font-light sm:text-lg">
             <p className="leading-tight">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Suscipit, molestiae.
+              I’m a Computer Science student with a passion for building clean,
+              efficient, and purposeful software. I believe in the power of
+              simple, readable code to solve complex problems.
             </p>
-            <p className="leading-tight">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Consequatur mollitia voluptatem modi minus.
-            </p>
+            <blockquote className="leading-tight">
+              <p>“An idiot admires complexity, a genius admires simplicity.”</p>
+              <footer className="ml-[1em]">— Terry Davis</footer>
+            </blockquote>
             <Image
               src="/cover.jpg"
               alt="cover"

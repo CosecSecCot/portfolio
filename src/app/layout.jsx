@@ -4,6 +4,7 @@ import "./globals.css";
 import LenisWrapper from "@/components/LenisWrapper";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "next-themes";
 
 const satoshi = localFont({
   src: [
@@ -31,15 +32,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${satoshi.className} ${robotoMono.variable} antialiased`}
       >
-        <LenisWrapper>
-          <Navbar />
-          {children}
-          <Footer />
-        </LenisWrapper>
+        <ThemeProvider themes={["dark", "light", "dark-mid", "light-mid"]}>
+          <LenisWrapper>
+            <Navbar />
+            {children}
+            <Footer />
+          </LenisWrapper>
+        </ThemeProvider>
       </body>
     </html>
   );
