@@ -33,7 +33,7 @@ export default function TextLink({ children, className, href, target }) {
             <span
               key={index}
               className="letter"
-              style={{ transitionDelay: `${0.03 * index}s` }}
+              style={{ transitionDelay: `${0.005 * index}s` }}
             >
               {letter.trim() === "" ? "\xa0" : letter}
             </span>

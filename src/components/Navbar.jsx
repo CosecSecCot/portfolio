@@ -55,7 +55,7 @@ export default function Navbar() {
 
   return (
     <>
-      <audio id="bg-audio" loop autoPlay>
+      <audio id="bg-audio" loop>
         <source src="/sci-fi-ambient-music-183269.mp3" type="audio/mpeg" />
       </audio>
       <header className="sticky z-50 top-0 w-full">
