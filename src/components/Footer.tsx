@@ -41,19 +41,18 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="relative min-h-[90vh] mix-blend-difference">
+    <footer className="relative flex flex-col justify-between min-h-[90vh] mix-blend-difference">
       <GradientBackground color1="#CCCCCC" />
 
-      <FooterLinks />
-
-      <div className="pt-[64px] md:pt-[128px] p-4 md:p-6 md:ml-auto md:w-1/2">
-        <div className="grid md:grid-cols-2 gap-8">
+      <div>
+        <FooterLinks />
+        <div className="pt-[64px] md:pt-[128px] p-4 md:p-6 md:ml-auto md:w-2/3 xl:w-1/2">
           <div className="md:text-lg">
-            <p>
+            <p className="w-1/2">
               Get in touch for collaborations or full-time opportunities. Let's
               get acquainted.
             </p>
-            <div className="mt-4 flex gap-4">
+            <div className="mt-4 flex gap-4 flex-wrap">
               <Button
                 href="mailto:cosecseccot581@gmail.com"
                 type="secondary"
@@ -69,7 +68,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 w-full p-4 md:p-6 flex max-md:flex-col justify-between md:items-end">
+      <div className="w-full p-4 md:p-6 flex max-md:flex-col justify-between md:items-end">
         <TextReveal splitBy="chars">
           <h2 className="font-serif text-[22vw] md:text-[96px] text-center">
             Jagjot Singh
@@ -90,7 +89,7 @@ export default function Footer() {
 
 function FooterLinks() {
   return (
-    <div className="pt-[64px] md:pt-[128px] p-4 md:p-6 md:ml-auto md:w-1/2">
+    <div className="pt-[64px] md:pt-[128px] p-4 md:p-6 md:ml-auto md:w-2/3 xl:w-1/2">
       <div className="grid md:grid-cols-2 gap-8">
         {Object.entries(footerLinks).map(([title, links]) => (
           <div key={title} className="flex flex-col gap-4">
@@ -124,7 +123,7 @@ function CustomLink({
     <Link
       href={href}
       className={cn(
-        "text-[#666] mix-blend-difference hover:underline w-max",
+        "text-[#666] mix-blend-difference hover:underline inline-block",
         className
       )}
       {...rest}
