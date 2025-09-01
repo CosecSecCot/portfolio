@@ -48,7 +48,7 @@ export default function Footer() {
         <FooterLinks />
         <div className="pt-[64px] md:pt-[128px] p-4 md:p-6 md:ml-auto md:w-2/3 xl:w-1/2">
           <div className="md:text-lg">
-            <p className="w-1/2">
+            <p className="sm:w-1/2">
               Get in touch for collaborations or full-time opportunities. Let's
               get acquainted.
             </p>
@@ -97,8 +97,8 @@ function FooterLinks() {
   return (
     <div className="pt-[64px] md:pt-[128px] p-4 md:p-6 md:ml-auto md:w-2/3 xl:w-1/2">
       <div className="grid md:grid-cols-2 gap-8">
-        {Object.entries(footerLinks).map(([title, links]) => (
-          <div key={title} className="flex flex-col gap-4">
+        {Object.entries(footerLinks).map(([title, links], index) => (
+          <div key={index} className="flex flex-col gap-4">
             <h3 className="uppercase text-xl md:text-2xl">{title}</h3>
             <div className="flex flex-col">
               {links.map((link, index) => (
@@ -129,7 +129,7 @@ function CustomLink({
     <Link
       href={href}
       className={cn(
-        "text-[#666] mix-blend-difference hover:underline inline-block",
+        "text-[#666] mix-blend-difference hover:underline w-fit",
         className
       )}
       {...rest}
