@@ -78,7 +78,13 @@ export default function Footer() {
           <CustomLink href="/imprint" className="text-lg">
             Imprint, Privacy
           </CustomLink>
-          <Button href="/" invert className="text-black mix-blend-difference">
+          <Button
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            invert
+            className="text-black mix-blend-difference"
+          >
             Go To Top 🡡
           </Button>
         </div>
