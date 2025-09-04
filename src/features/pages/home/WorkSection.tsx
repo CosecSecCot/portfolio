@@ -8,8 +8,11 @@ import Button from "@/components/Button";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
+import { projects } from "@/data/work";
+import { useMediaQuery } from "@/app/hooks/useMediaQuery";
+import { useNoHover } from "@/app/hooks/noHover";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function WorkSection() {
@@ -66,13 +69,13 @@ export default function WorkSection() {
           </TextReveal>
         </div>
         <div className="flex gap-4 md:gap-6">
-          {new Array(7).fill(0).map((_, idx) => (
+          {projects.map((project) => (
             <WorkCard
-              key={idx}
-              img="/img1.jpg"
-              href="/work/iiitd-sigchi"
-              title="IIITD ACM SIGCHI Student Chapter Website"
-              description="Web Development, NextJS, GSAP"
+              key={project.slug}
+              img={project.images[0] || "/img1.jpg"}
+              href={`/work/${project.slug}`}
+              title={project.title}
+              description={project.details.tools.join(", ")}
             />
           ))}
         </div>
@@ -97,24 +100,70 @@ function WorkCard({
   title: string;
   description: string;
 }) {
+  const container = useRef(null);
+  const [hover, setHover] = useState(false);
+  const isTouchDevice = useNoHover();
+
+  useGSAP(
+    () => {
+      if (isTouchDevice) {
+        gsap.set(container.current, {
+          height: "auto",
+          opacity: 1,
+        });
+        return;
+      }
+
+      if (hover) {
+        gsap.to(container.current, {
+          height: "auto",
+          opacity: 1,
+          duration: 0.5,
+          ease: "power4.out",
+        });
+      } else {
+        gsap.to(container.current, {
+          height: 0,
+          opacity: 0,
+          duration: 0.5,
+          ease: "power4.out",
+        });
+      }
+    },
+    { dependencies: [hover, isTouchDevice] }
+  );
+
   return (
     <Link
       href={href}
-      className="w-[calc(100vw-24px)] md:w-[400px] flex flex-col gap-[1em] py-4 lg:py-6 cursor-pointer group"
+      onMouseEnter={() => {
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setHover(false);
+      }}
+      className="w-[calc(100vw-24px)] md:w-[400px] flex flex-col gap-[1em] py-4 lg:py-6 cursor-pointer"
     >
       <div className="image-reveal relative w-full h-full">
         <Image
           src={img}
           alt="title"
           width={400}
-          height={1080}
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none group-hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(.7,0,.3,1)]"
+          height={800}
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         />
       </div>
-      <div>
+      <div
+        ref={container}
+        className="flex-shrink-0 overflow-hidden"
+        style={{
+          height: 0,
+          opacity: 0,
+        }}
+      >
         <h3 className="uppercase text-2xl">{title}</h3>
         <p className="text-secondary">{description}</p>
-        <div className="opacity-0 group-hover:opacity-100 mt-[1em]">
+        <div className="mt-4">
           <Button>Check Project 🡢</Button>
         </div>
       </div>
