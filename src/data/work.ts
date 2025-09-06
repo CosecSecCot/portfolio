@@ -25,7 +25,7 @@ export const projects: Project[] = [
     details: {
       role: "Web Developer",
       client: "IIITD HCD Department",
-      year: 2024,
+      year: 2025,
       tools: ["Strapi", "Next.js", "GSAP", "Framer Motion", "Tailwind CSS"],
     },
     images: ["/hcd/img1.png", "/hcd/img2.png"],
@@ -43,7 +43,7 @@ export const projects: Project[] = [
       year: 2024,
       tools: ["Next.js", "GSAP", "Tailwind CSS"],
     },
-    images: ["/sigchi/img1.png", "/sigchi/img2.jpg"],
+    images: ["/sigchi/img1.png", "/sigchi/img2.png"],
     overview: "This project involved creating a modern, responsive website that highlights the department's work and research. We used Next.js for server-side rendering, GSAP for fluid animations, and Tailwind CSS for a utility-first styling approach.",
   },
 ];
