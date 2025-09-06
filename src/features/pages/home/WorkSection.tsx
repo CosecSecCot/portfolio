@@ -147,7 +147,7 @@ function WorkCard({
       <div className="image-reveal relative w-full h-full">
         <Image
           src={img}
-          alt="title"
+          alt={title}
           width={400}
           height={800}
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"

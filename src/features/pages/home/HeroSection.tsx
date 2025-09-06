@@ -15,7 +15,7 @@ export default function HeroSection() {
             alt=""
             width={341}
             height={502}
-            className="flex-shrink-0 object-contain pointer-events-none"
+            className="flex-shrink-0 max-sm:w-full object-contain pointer-events-none"
             priority
           />
         </ImageReveal>
