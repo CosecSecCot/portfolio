@@ -11,8 +11,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { projects } from "@/data/work";
-import { useMediaQuery } from "@/app/hooks/useMediaQuery";
 import { useNoHover } from "@/app/hooks/noHover";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function WorkSection() {
@@ -52,15 +52,15 @@ export default function WorkSection() {
       ref={container}
       className="min-h-screen flex flex-col overflow-hidden mt-[25vh]"
     >
-      <div ref={slider} className="flex-1 h-full flex mt-[32px]">
+      <div ref={slider} className="flex-1 h-full flex mt-[48px]">
         <div className="flex-shrink-0 max-w-screen md:w-[60vw] px-4 md:px-6">
           <OpacityReveal duration={1} start={80}>
             <h1 className="font-serif w-full text-right text-[60px] lg:text-[96px]">
-              Work ✱
+              Work<sup>({projects.length})</sup>
             </h1>
           </OpacityReveal>
           <TextReveal splitBy="words" stagger={0.02} duration={1.5} start={80}>
-            <p className="w-full md:ml-auto md:max-w-[640px] text-right text-lg lg:text-xl">
+            <p className="w-full md:ml-auto md:max-w-[640px] text-right text-sm lg:text-lg">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus
               molestias quod laborum debitis laboriosam corporis sit, facere
               minus libero nobis eius architecto placeat et incidunt sapiente
@@ -81,7 +81,7 @@ export default function WorkSection() {
         </div>
         <div className="flex-shrink-0 w-screen md:w-[50vw] py-4 md:py-6 flex flex-col justify-center items-center">
           <Button href="/work" className="w-max">
-            VIEW ALL 🡢
+            VIEW ALL <ArrowRightIcon className="size-4" />
           </Button>
         </div>
       </div>
@@ -161,10 +161,13 @@ function WorkCard({
           opacity: 0,
         }}
       >
-        <h3 className="uppercase text-2xl">{title}</h3>
-        <p className="text-secondary">{description}</p>
+        <h3 className="text-xl">{title}</h3>
+        <p className="text-secondary text-sm">{description}</p>
         <div className="mt-4">
-          <Button>Check Project 🡢</Button>
+          <Button className="text-sm">
+            <span>Check Project</span>
+            <ArrowRightIcon className="size-3.5" />
+          </Button>
         </div>
       </div>
     </Link>

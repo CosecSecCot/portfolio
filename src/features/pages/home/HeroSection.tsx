@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import ImageReveal from "@/features/animations/ImageReveal";
 import OpacityReveal from "@/features/animations/OpacityReveal";
 import TextReveal from "@/features/animations/TextReveal";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
 export default function HeroSection() {
@@ -26,7 +27,7 @@ export default function HeroSection() {
             </h1>
           </TextReveal>
           <TextReveal splitBy="words" stagger={0.02} duration={1.2} delay={1}>
-            <p className="text-lg mb-8">
+            <p className="text-sm lg:text-lg mb-4">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus
               molestias quod laborum debitis laboriosam corporis sit, facere
               minus libero nobis eius architecto placeat et incidunt sapiente
@@ -34,7 +35,10 @@ export default function HeroSection() {
             </p>
           </TextReveal>
           <OpacityReveal duration={1} delay={1.4}>
-            <Button href="#about-me">KNOW MORE 🡢</Button>
+            <Button href="/about" className="text-sm">
+              <span>Know More</span>
+              <ArrowRightIcon className="size-3.5" />
+            </Button>
           </OpacityReveal>
         </div>
       </div>

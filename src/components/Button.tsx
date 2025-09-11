@@ -25,6 +25,7 @@ const Button = React.forwardRef(
   ) => {
     const baseClassName = cn(
       "border px-[1em] py-[0.5em] rounded-full transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] duration-300 cursor-pointer",
+      "flex items-center w-max gap-2",
       type === "secondary"
         ? "border-black bg-black hover:bg-transparent text-white hover:text-black"
         : "border-black hover:bg-black hover:text-white",

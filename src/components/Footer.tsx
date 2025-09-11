@@ -5,6 +5,7 @@ import Button from "./Button";
 import GradientBackground from "./GradientBackground";
 import { cn } from "@/lib/utils";
 import TextReveal from "@/features/animations/TextReveal";
+import { ArrowUpIcon } from "@heroicons/react/24/outline";
 
 const footerLinks = {
   "Quick Links": [
@@ -49,10 +50,10 @@ export default function Footer() {
       <div>
         <FooterLinks />
         <div className="pt-[64px] md:pt-[128px] p-4 md:p-6 md:ml-auto md:w-2/3 xl:w-1/2">
-          <div className="md:text-lg">
+          <div className="text-sm lg:text-lg">
             <p className="sm:w-1/2">
-              Get in touch for collaborations or full-time opportunities. Let's
-              get acquainted.
+              Get in touch for collaborations or full-time opportunities.
+              Let&lsquo;s get acquainted.
             </p>
             <div className="mt-4 flex gap-4 flex-wrap">
               <Button
@@ -87,7 +88,8 @@ export default function Footer() {
             invert
             className="text-black mix-blend-difference"
           >
-            Go To Top 🡡
+            <span>Go To Top</span>
+            <ArrowUpIcon className="size-4" />
           </Button>
         </div>
       </div>
@@ -104,7 +106,7 @@ function FooterLinks() {
             <h3 className="uppercase text-xl md:text-2xl">{title}</h3>
             <div className="flex flex-col">
               {links.map((link, index) => (
-                <CustomLink key={index} href={link.href} className="md:text-lg">
+                <CustomLink key={index} href={link.href} className="lg:text-lg">
                   {link.label}
                 </CustomLink>
               ))}

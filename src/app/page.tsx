@@ -3,7 +3,6 @@
 import Preloader from "@/components/Preloader";
 import HeroSection from "@/features/pages/home/HeroSection";
 import WorkSection from "@/features/pages/home/WorkSection";
-import AboutSection from "@/features/pages/home/AboutSection";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -39,10 +38,9 @@ export default function Home() {
     <>
       <Preloader />
       <main>
-        <article>
+        <article className="mb-[25vh]">
           <HeroSection />
           <WorkSection />
-          <AboutSection />
         </article>
       </main>
       <Footer />
