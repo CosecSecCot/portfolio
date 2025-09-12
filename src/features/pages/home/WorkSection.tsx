@@ -10,9 +10,10 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
 import Link from "next/link";
+import {useMediaQuery} from "@/hooks/useMediaQuery";
 import { projects } from "@/data/work";
-import { useNoHover } from "@/app/hooks/noHover";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function WorkSection() {
@@ -102,7 +103,7 @@ function WorkCard({
 }) {
   const container = useRef(null);
   const [hover, setHover] = useState(false);
-  const isTouchDevice = useNoHover();
+  const isTouchDevice = useMediaQuery('(pointer: coarse)');
 
   useGSAP(
     () => {

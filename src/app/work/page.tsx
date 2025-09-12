@@ -66,7 +66,7 @@ function WorkCard({
 }) {
   return (
     <div className={cn("relative w-full", className)}>
-      <Link href={`work/${project.slug}`} className="group">
+      <Link href={`/work/${project.slug}`} className="group">
         <Image
           src={project.images[1]}
           alt={project.slug}
@@ -78,7 +78,7 @@ function WorkCard({
       <div className="py-2 md:py-3">
         <h3 className="text-xl xl:text-2xl">{project.title}</h3>
         <p
-          className="text-[#777] text-sm md:text-md"
+          className="text-secondary text-sm md:text-md"
           style={{
             width: "min(100%, 512px)",
           }}
