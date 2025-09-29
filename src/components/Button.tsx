@@ -6,37 +6,40 @@ const Button = React.forwardRef(
   (
     {
       children,
+      externalLink = false,
       href,
       className,
       type = "default",
       invert = false,
-      noUpper = false,
+      scroll = true,
       onClick,
     }: {
       children: React.ReactNode;
+      externalLink?: boolean;
       href?: string;
       type?: "default" | "secondary";
       className?: string;
       invert?: boolean;
-      noUpper?: boolean;
+      scroll?: boolean;
       onClick?: () => void;
     },
     ref
   ) => {
     const baseClassName = cn(
-      "border px-[1em] py-[0.5em] rounded-full transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] duration-300 cursor-pointer",
-      "flex items-center w-max gap-2",
+      "px-[1em] py-[0.5em] transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] duration-300 cursor-pointer",
+      "flex items-center w-full max-w-[400px] gap-2",
       type === "secondary"
-        ? "border-black bg-black hover:bg-transparent text-white hover:text-black"
-        : "border-black hover:bg-black hover:text-white",
-      noUpper ? "" : "uppercase",
+        ? "bg-foreground/20 text-foreground border-foreground/20 hover:bg-foreground hover:text-background hover:border-foreground"
+        : "bg-foreground text-background border-foreground hover:bg-foreground/10 hover:text-foreground hover:border-foreground/20",
       className
     );
 
     return href ? (
       <Link
         ref={ref as ForwardedRef<HTMLAnchorElement>}
+        target={externalLink ? "_blank" : undefined}
         href={href}
+        scroll={scroll}
         className={baseClassName}
         style={{ filter: invert ? "invert(100%)" : "" }}
       >

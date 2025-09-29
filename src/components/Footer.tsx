@@ -2,24 +2,22 @@
 
 import Link from "next/link";
 import Button from "./Button";
-import GradientBackground from "./GradientBackground";
 import { cn } from "@/lib/utils";
-import TextReveal from "@/features/animations/TextReveal";
-import { ArrowUpIcon } from "@heroicons/react/24/outline";
+import { ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 
 const footerLinks = {
   "Quick Links": [
     {
       label: "IIITD ACM SIGCHI Student Chapter",
-      href: "/work/iiitd-sigchi",
+      href: "/projects/iiitd-sigchi",
     },
     {
       label: "IIITD HCD Department Website",
-      href: "/work/iiitd-hcd",
+      href: "/projects/iiitd-hcd",
     },
     {
       label: "Ebony Ray-tracing Engine",
-      href: "/work/ebony",
+      href: "/projects/ebony",
     },
   ],
   Socials: [
@@ -36,7 +34,7 @@ const footerLinks = {
       href: "",
     },
     {
-      label: "Itch.io",
+      label: "itch.io",
       href: "",
     },
   ],
@@ -44,77 +42,45 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="relative flex flex-col justify-between min-h-[90vh] mix-blend-difference">
-      <GradientBackground color1="#CCCCCC" />
-
-      <div>
-        <FooterLinks />
-        <div className="pt-[64px] md:pt-[128px] p-4 md:p-6 md:ml-auto md:w-2/3 xl:w-1/2">
-          <div className="text-sm lg:text-lg">
-            <p className="sm:w-1/2">
+    <footer className="relative flex flex-col justify-between p-4 md:p-6 bg-foreground/5">
+      <div className="grid md:grid-cols-2 mb-[10vh]">
+        <span className="font-serif text-4xl mb-[1em]">Jagjot Singh</span>
+        <div>
+          <div className="grid md:grid-cols-2 gap-[2em] mb-[5vh]">
+            {Object.entries(footerLinks).map(([title, links], index) => (
+              <section key={index}>
+                <p id={title} className="text-neutral-400">
+                  {title}
+                </p>
+                <menu
+                  aria-labelledby={title}
+                  className="mt-[0.5em] flex flex-col"
+                >
+                  {links.map((link, linkIndex) => (
+                    <CustomLink key={linkIndex} href={link.href}>
+                      {link.label}
+                    </CustomLink>
+                  ))}
+                </menu>
+              </section>
+            ))}
+          </div>
+          <div className="mt-[2em] lg:w-1/2 leading-tight">
+            <p>
               Get in touch for collaborations or full-time opportunities.
-              Let&lsquo;s get acquainted.
+              Let&rsquo;s get acquainted.
             </p>
-            <div className="mt-4 flex gap-4 flex-wrap">
-              <Button
-                href="mailto:cosecseccot581@gmail.com"
-                type="secondary"
-                noUpper
-              >
-                cosecseccot581@gmail.com
-              </Button>
-              <Button type="secondary" noUpper>
-                Get CV
-              </Button>
-            </div>
+            <Button href="/contact" className="mt-[1em] justify-between group">
+              Contact me
+              <ArrowsRightLeftIcon className="size-[1.25em] group-hover:rotate-90 transition-transform duration-300" />
+            </Button>
           </div>
         </div>
       </div>
-
-      <div className="w-full p-4 md:p-6 flex max-md:flex-col justify-between md:items-end">
-        <TextReveal splitBy="chars">
-          <h2 className="font-serif text-[22vw] md:text-[96px] text-center">
-            Jagjot Singh
-          </h2>
-        </TextReveal>
-        <div className="flex gap-4 justify-between items-center">
-          <CustomLink href="/imprint" className="text-lg">
-            Imprint, Privacy
-          </CustomLink>
-          <Button
-            onClick={() => {
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            invert
-            className="text-black mix-blend-difference"
-          >
-            <span>Go To Top</span>
-            <ArrowUpIcon className="size-4" />
-          </Button>
-        </div>
+      <div className="md:ml-auto md:w-1/2 text-neutral-400 text-xs">
+        <p>&copy; Copyright 2025 Jagjot Singh. All rights reserved.</p>
       </div>
     </footer>
-  );
-}
-
-function FooterLinks() {
-  return (
-    <div className="pt-[64px] md:pt-[128px] p-4 md:p-6 md:ml-auto md:w-2/3 xl:w-1/2">
-      <div className="grid md:grid-cols-2 gap-8">
-        {Object.entries(footerLinks).map(([title, links], index) => (
-          <div key={index} className="flex flex-col gap-4">
-            <h3 className="uppercase text-xl md:text-2xl">{title}</h3>
-            <div className="flex flex-col">
-              {links.map((link, index) => (
-                <CustomLink key={index} href={link.href} className="lg:text-lg">
-                  {link.label}
-                </CustomLink>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }
 
@@ -132,10 +98,7 @@ function CustomLink({
   return (
     <Link
       href={href}
-      className={cn(
-        "text-[#666] mix-blend-difference hover:underline w-fit",
-        className
-      )}
+      className={cn("hover:underline w-fit", className)}
       {...rest}
     >
       {children}

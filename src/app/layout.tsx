@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import ReactLenis from "lenis/react";
+import Navbar from "@/components/Navbar";
 
 const serif = Instrument_Serif({
   variable: "--font-serif",
@@ -14,16 +13,6 @@ const serif = Instrument_Serif({
 const sans = Instrument_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
-});
-
-const mono = localFont({
-  src: [
-    {
-      path: "./fonts/iosevka-extendedlight.ttf",
-      style: "normal",
-    },
-  ],
-  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -38,9 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${sans.variable} ${serif.variable} ${mono.variable} antialiased`}
-      >
+      <body className={`${sans.variable} ${serif.variable} antialiased`}>
         <ReactLenis root>
           <Navbar />
           {children}
