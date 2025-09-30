@@ -1,3 +1,9 @@
+import { StaticImageData } from "next/image";
+import hcdImg1 from "../../public/hcd/img1.png";
+import hcdImg2 from "../../public/hcd/img2.png";
+import sigchiImg1 from "../../public/sigchi/img1.png";
+import sigchiImg2 from "../../public/sigchi/img2.png";
+
 export interface Project {
   slug: string;
   title: string;
@@ -11,7 +17,7 @@ export interface Project {
   };
   liveLink?: string;
   githubLink?: string;
-  images: string[];
+  images: StaticImageData[];
   overview: string;
 }
 
@@ -28,7 +34,7 @@ export const projects: Project[] = [
       year: 2025,
       tools: ["Strapi", "Next.js", "GSAP", "Framer Motion", "Tailwind CSS"],
     },
-    images: ["/hcd/img1.png", "/hcd/img2.png"],
+    images: [hcdImg1, hcdImg2],
     overview: "This project involved creating a modern, responsive website that highlights the department's work and research. We used Next.js for server-side rendering, GSAP for fluid animations, and Tailwind CSS for a utility-first styling approach.",
   },
   {
@@ -43,7 +49,7 @@ export const projects: Project[] = [
       year: 2024,
       tools: ["Next.js", "GSAP", "Tailwind CSS"],
     },
-    images: ["/sigchi/img1.png", "/sigchi/img2.png"],
+    images: [sigchiImg1, sigchiImg2],
     overview: "This project involved creating a modern, responsive website that highlights the department's work and research. We used Next.js for server-side rendering, GSAP for fluid animations, and Tailwind CSS for a utility-first styling approach.",
   },
 ];

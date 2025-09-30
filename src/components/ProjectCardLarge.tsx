@@ -25,6 +25,7 @@ export default function ProjectCardLarge({
           width={800}
           height={800}
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          placeholder="blur"
         />
       </div>
       <div className="flex-1 p-4 flex flex-col gap-[1em] justify-between">

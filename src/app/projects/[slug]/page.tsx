@@ -65,6 +65,7 @@ export default async function Page(props: {
                   width={1280}
                   height={720}
                   priority
+                  placeholder="blur"
                 />
               ))}
             </section>

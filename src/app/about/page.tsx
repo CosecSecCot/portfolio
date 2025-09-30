@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Potrait from "../../../public/potrait.png";
 
 export default function About() {
   return (
@@ -25,12 +26,13 @@ export default function About() {
                 improving along with the project.
               </p>
               <Image
-                src="/potrait.png"
+                src={Potrait}
                 alt=""
                 width={1364}
                 height={2008}
                 priority
                 className="mt-[1em] w-full max-w-[320px]"
+                placeholder="blur"
               />
             </section>
             <div className="space-y-[2em]">
