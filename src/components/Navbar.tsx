@@ -4,8 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { projects } from "@/data/work";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { cubicBezier, motion } from "framer-motion";
 import { useState } from "react";
+
+const ease = cubicBezier(0.5, 0.1, 0.2, 1);
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -77,12 +79,14 @@ function MobileDrawer({
       variants={{
         active: {
           y: 0,
+          scale: 1,
         },
         inactive: {
-          y: "-100%",
+          y: "-112.5%",
+          scale: 1.25,
         },
       }}
-      transition={{ delay: 0.1, duration: 0.75, ease: [0.5, 0, 0.25, 1] }}
+      transition={{ delay: 0.1, duration: 0.75, ease: ease }}
       className={cn(
         "absolute z-10 top-0 w-screen h-screen bg-foreground text-background backdrop-blur-2xl p-4 flex flex-col justify-center",
         className
@@ -93,8 +97,9 @@ function MobileDrawer({
         variants={{
           active: {
             transition: {
-              staggerChildren: 0.05,
+              staggerChildren: 0.1,
               staggerDirection: 1,
+              delayChildren: 0.1,
             },
           },
         }}
@@ -266,12 +271,12 @@ function NavLinkMobile({
               y: 0,
             },
             inactive: {
-              y: "-100%",
+              y: "100%",
             },
           }}
           transition={{
             duration: 1,
-            ease: [0.75, 0, 0.25, 1],
+            ease: ease,
           }}
         >
           {children}
