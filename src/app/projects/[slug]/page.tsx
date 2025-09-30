@@ -4,8 +4,9 @@ import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import ProjectCardLarge from "@/components/ProjectCardLarge";
 import { projects } from "@/data/work";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function Page(props: {
@@ -29,9 +30,18 @@ export default async function Page(props: {
       <main className="mb-[10vh]">
         <article className="p-4 sm:p-6">
           <div className="relative w-full min-h-screen flex flex-col md:flex-row gap-8">
-            <section className="md:sticky md:top-0 flex-1 space-y-4 h-fit">
+            <section className="md:sticky md:top-[96px] max-md:mt-[96px] flex-1 space-y-4 h-fit">
+              <OpacityReveal delay={0.1}>
+                <Link
+                  href="/projects"
+                  className="flex items-center gap-2 border-b border-transparent hover:border-foreground w-fit"
+                >
+                  <ArrowLeftIcon className="size-[1em]" />
+                  <span>Back to Projects</span>
+                </Link>
+              </OpacityReveal>
               <OpacityReveal>
-                <h1 className="font-serif text-[72px] lg:text-[80px] mt-[96px] leading-tight">
+                <h1 className="font-serif text-[72px] lg:text-[80px] leading-tight">
                   {project.title}
                 </h1>
               </OpacityReveal>
