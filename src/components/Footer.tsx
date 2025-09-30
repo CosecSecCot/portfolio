@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Button from "./Button";
 import { cn } from "@/lib/utils";

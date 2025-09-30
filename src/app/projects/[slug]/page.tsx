@@ -1,3 +1,5 @@
+import OpacityReveal from "@/components/animations/OpacityReveal";
+import TextReveal from "@/components/animations/TextReveal";
 import Button from "@/components/Button";
 import Footer from "@/components/Footer";
 import ProjectCardLarge from "@/components/ProjectCardLarge";
@@ -28,33 +30,41 @@ export default async function Page(props: {
         <article className="p-4 sm:p-6">
           <div className="relative w-full min-h-screen flex flex-col md:flex-row gap-8">
             <section className="md:sticky md:top-0 flex-1 space-y-4 h-fit">
-              <h1 className="font-serif text-[72px] lg:text-[80px] mt-[96px] leading-tight">
-                {project.title}
-              </h1>
-              <p className="sm:w-2/3">{project.overview}</p>
-              <Button
-                externalLink
-                href={project.liveLink}
-                className="justify-between group"
-              >
-                Visit Live
-                <ArrowRightIcon className="size-[1em] group-hover:-rotate-z-45 transition-transform duration-300" />
-              </Button>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
-                <h2 className="col-span-full font-medium text-lg">
-                  Project Details
-                </h2>
-                <h3>Role</h3>
-                <p className="text-foreground/50">{project.details.role}</p>
-                <h3>Associated With</h3>
-                <p className="text-foreground/50">{project.details.client}</p>
-                <h3>Technologies Used</h3>
-                <p className="text-foreground/50">
-                  {project.details.tools.join(", ")}
-                </p>
-                <h3>Duration</h3>
-                <p className="text-foreground/50">{project.details.year}</p>
-              </div>
+              <OpacityReveal>
+                <h1 className="font-serif text-[72px] lg:text-[80px] mt-[96px] leading-tight">
+                  {project.title}
+                </h1>
+              </OpacityReveal>
+              <TextReveal splitBy="words">
+                <p className="sm:w-2/3">{project.overview}</p>
+              </TextReveal>
+              <OpacityReveal delay={0.2}>
+                <Button
+                  externalLink
+                  href={project.liveLink}
+                  className="justify-between group"
+                >
+                  Visit Live
+                  <ArrowRightIcon className="size-[1em] group-hover:-rotate-z-45 transition-transform duration-300" />
+                </Button>
+              </OpacityReveal>
+              <OpacityReveal delay={0.3}>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
+                  <h2 className="col-span-full font-medium text-lg">
+                    Project Details
+                  </h2>
+                  <h3>Role</h3>
+                  <p className="text-foreground/50">{project.details.role}</p>
+                  <h3>Associated With</h3>
+                  <p className="text-foreground/50">{project.details.client}</p>
+                  <h3>Technologies Used</h3>
+                  <p className="text-foreground/50">
+                    {project.details.tools.join(", ")}
+                  </p>
+                  <h3>Duration</h3>
+                  <p className="text-foreground/50">{project.details.year}</p>
+                </div>
+              </OpacityReveal>
             </section>
             <section className="flex-1 flex flex-col">
               {project.images.map((img, index) => (
