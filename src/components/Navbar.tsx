@@ -69,7 +69,7 @@ function MobileDrawer({
 }: {
   className?: string;
   pathname: string;
-  setActive: any;
+  setActive: (active: boolean) => void;
 }) {
   return (
     <motion.div
@@ -135,7 +135,7 @@ function MobileDrawer({
         </NavLinkMobile>
       </motion.menu>
       <div className="flex flex-col justify-end h-full">
-        <p className="text-background/70 text-xs">
+        <p className="text-background/70 text-xs pb-[10%]">
           &copy; Copyright 2025 Jagjot Singh. All rights reserved.
         </p>
       </div>
@@ -150,7 +150,7 @@ function MenuIcon({
 }: {
   className?: string;
   active: boolean;
-  setActive: any;
+  setActive: (active: boolean) => void;
 }) {
   return (
     <motion.button
@@ -217,7 +217,7 @@ function NavLink({
   href: string;
   children: React.ReactNode;
   pathname: string;
-  onClick?: any;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }) {
   // Check if the link should be active
   // For the `/` link (homepage), we check for an exact match.
@@ -247,7 +247,7 @@ function NavLinkMobile({
   href: string;
   children: React.ReactNode;
   pathname: string;
-  onClick?: any;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }) {
   // Check if the link should be active
   // For the `/` link (homepage), we check for an exact match.
