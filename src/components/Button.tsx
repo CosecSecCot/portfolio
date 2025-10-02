@@ -1,62 +1,60 @@
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import React, { ForwardedRef } from "react";
 
-const Button = React.forwardRef(
-  (
-    {
-      children,
-      externalLink = false,
-      href,
-      className,
-      type = "default",
-      invert = false,
-      scroll = true,
-      onClick,
-    }: {
-      children: React.ReactNode;
-      externalLink?: boolean;
-      href?: string;
-      type?: "default" | "secondary";
-      className?: string;
-      invert?: boolean;
-      scroll?: boolean;
-      onClick?: () => void;
-    },
-    ref
-  ) => {
-    const baseClassName = cn(
-      "px-[1em] py-[0.5em] transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] duration-300 cursor-pointer",
-      "flex items-center w-full max-w-[400px] gap-2",
-      type === "secondary"
-        ? "bg-foreground/20 text-foreground border-foreground/20 hover:bg-foreground hover:text-background hover:border-foreground"
-        : "bg-foreground text-background border-foreground hover:bg-foreground/10 hover:text-foreground hover:border-foreground/20",
-      className
-    );
+type BaseButtonProps = {
+  children: React.ReactNode;
+  className?: string;
+  buttonStyle?: "default" | "secondary";
+};
 
-    return href ? (
+type LinkButtonProps = BaseButtonProps &
+  LinkProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement>;
+
+type NativeButtonProps = BaseButtonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: never; // Ensure `href` is not passed
+  };
+
+type ButtonProps = LinkButtonProps | NativeButtonProps;
+
+const Button = React.forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  ButtonProps
+>(({ className, buttonStyle = "default", children, ...props }, ref) => {
+  const baseClassName = cn(
+    "px-[1em] py-[0.5em] transition-colors ease-[cubic-bezier(0.16,1,0.3,1)] duration-300 cursor-pointer",
+    "flex items-center w-full max-w-[400px] gap-2",
+    buttonStyle === "secondary"
+      ? "bg-foreground/20 text-foreground border-foreground/20 hover:bg-foreground hover:text-background hover:border-foreground"
+      : "bg-foreground text-background border-foreground hover:bg-foreground/10 hover:text-foreground hover:border-foreground/20",
+    className
+  );
+
+  // Use the 'href' prop to discriminate between the types
+  if ("href" in props && props.href) {
+    return (
       <Link
         ref={ref as ForwardedRef<HTMLAnchorElement>}
-        target={externalLink ? "_blank" : undefined}
-        href={href}
-        scroll={scroll}
         className={baseClassName}
-        style={{ filter: invert ? "invert(100%)" : "" }}
+        {...props}
       >
         {children}
       </Link>
-    ) : (
-      <button
-        ref={ref as ForwardedRef<HTMLButtonElement>}
-        className={baseClassName}
-        style={{ filter: invert ? "invert(100%)" : "" }}
-        onClick={onClick}
-      >
-        {children}
-      </button>
     );
   }
-);
+
+  return (
+    <button
+      ref={ref as ForwardedRef<HTMLButtonElement>}
+      className={baseClassName}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+});
 
 Button.displayName = "Button";
 

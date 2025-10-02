@@ -50,8 +50,8 @@ export default async function Page(props: {
               </TextReveal>
               <OpacityReveal delay={0.2}>
                 <Button
-                  externalLink
                   href={project.liveLink}
+                  target="_blank"
                   className="justify-between group"
                 >
                   Visit Live

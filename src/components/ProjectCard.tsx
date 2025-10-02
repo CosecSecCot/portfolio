@@ -37,7 +37,7 @@ export default function ProjectCard({
           </div>
         </div>
         <Button
-          type="secondary"
+          buttonStyle="secondary"
           href={`/projects/${project.slug}`}
           scroll={true}
           className="w-full max-w-full justify-between group"
