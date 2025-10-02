@@ -6,6 +6,7 @@ type BaseButtonProps = {
   children: React.ReactNode;
   className?: string;
   buttonStyle?: "default" | "secondary";
+  disabled?: boolean;
 };
 
 type LinkButtonProps = BaseButtonProps &
@@ -29,6 +30,7 @@ const Button = React.forwardRef<
     buttonStyle === "secondary"
       ? "bg-foreground/20 text-foreground border-foreground/20 hover:bg-foreground hover:text-background hover:border-foreground"
       : "bg-foreground text-background border-foreground hover:bg-foreground/10 hover:text-foreground hover:border-foreground/20",
+    props.disabled && "opacity-50 cursor-not-allowed",
     className
   );
 

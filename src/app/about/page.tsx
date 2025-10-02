@@ -20,11 +20,11 @@ export default function About() {
             <section>
               <TextReveal splitBy="words">
                 <p>
-                  Hello, I’m Jagjot Singh. I’m pursuing B.Tech in Computer
-                  Science and Design at IIIT Delhi. I have a little bit of
-                  experience in creative development and I have been exploring
-                  various topics in computer science like graphics, networking,
-                  design patterns, etc.
+                  Hello, I&rsquo;m Jagjot Singh. I&rsquo;m pursuing B.Tech in
+                  Computer Science and Design at IIIT Delhi. I have a little bit
+                  of experience in creative development and I have been
+                  exploring various topics in computer science like graphics,
+                  networking, design patterns, etc.
                   <br />
                   <br />I believe in project based learning and prototyping,
                   learning new things at each step, trying to do better and keep
@@ -68,8 +68,8 @@ export default function About() {
               <section>
                 <TextReveal splitBy="words">
                   <p>
-                    Always curious and building — I’m constantly working on
-                    projects. You can browse through my previous and on-going
+                    Always curious and building — I&rsquo;m constantly working
+                    on projects. You can browse through my previous and on-going
                     projects.
                   </p>
                 </TextReveal>

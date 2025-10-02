@@ -20,20 +20,16 @@ const footerLinks = {
   ],
   Socials: [
     {
-      label: "Instagram",
-      href: "",
+      label: "cosecseccot581@gmail.com",
+      href: "mailto:cosecseccot581@gmail.com",
     },
     {
       label: "LinkedIn",
-      href: "",
+      href: "https://www.linkedin.com/in/cosecseccot/",
     },
     {
       label: "GitHub",
-      href: "",
-    },
-    {
-      label: "itch.io",
-      href: "",
+      href: "https://github.com/CosecSecCot",
     },
   ],
 };
@@ -55,7 +51,11 @@ export default function Footer() {
                   className="mt-[0.5em] flex flex-col"
                 >
                   {links.map((link, linkIndex) => (
-                    <CustomLink key={linkIndex} href={link.href}>
+                    <CustomLink
+                      key={linkIndex}
+                      href={link.href}
+                      target="_blank"
+                    >
                       {link.label}
                     </CustomLink>
                   ))}
@@ -87,15 +87,10 @@ function CustomLink({
   children,
   className,
   ...rest
-}: {
-  href: string;
-  children: React.ReactNode;
-  className?: string;
-  rest?: object;
-}) {
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <Link
-      href={href}
+      href={href ?? ""}
       className={cn("hover:underline w-fit", className)}
       {...rest}
     >

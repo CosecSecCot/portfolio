@@ -26,7 +26,7 @@ export default function Page() {
               <p className="sm:w-1/2">
                 These projects represent my journey as a developer,
                 experimenting with new ideas and technologies along the way.
-                Have a look, and if something sparks your interest, let’s
+                Have a look, and if something sparks your interest, let&rsquo;s
                 connect!
               </p>
             </TextReveal>
