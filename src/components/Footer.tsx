@@ -8,28 +8,34 @@ const footerLinks = {
     {
       label: "IIITD ACM SIGCHI Student Chapter",
       href: "/projects/iiitd-sigchi",
+      externalLink: false,
     },
     {
       label: "IIITD HCD Department Website",
       href: "/projects/iiitd-hcd",
+      externalLink: false,
     },
     {
       label: "Ebony Ray-tracing Engine",
       href: "/projects/ebony",
+      externalLink: false,
     },
   ],
   Socials: [
     {
       label: "cosecseccot581@gmail.com",
       href: "mailto:cosecseccot581@gmail.com",
+      externalLink: true,
     },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/cosecseccot/",
+      externalLink: true,
     },
     {
       label: "GitHub",
       href: "https://github.com/CosecSecCot",
+      externalLink: true,
     },
   ],
 };
@@ -54,7 +60,7 @@ export default function Footer() {
                     <CustomLink
                       key={linkIndex}
                       href={link.href}
-                      target="_blank"
+                      target={link.externalLink ? "_blank" : undefined}
                     >
                       {link.label}
                     </CustomLink>
