@@ -14,6 +14,12 @@ const contactFormSchema = z.object({
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail(prevState: unknown, formData: FormData) {
+  const honeypot = formData.get("alternate-email");
+  if (honeypot) {
+    // This is likely a bot. Silently return success.
+    return { success: true };
+  }
+
   const validatedFields = contactFormSchema.safeParse({
     email: formData.get("email"),
     message: formData.get("message"),

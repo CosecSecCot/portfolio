@@ -82,6 +82,21 @@ export default function Page() {
                     rows={8}
                     className="col-span-full resize-y lg:text-lg px-[1em] py-[0.5em] border border-foreground/30"
                   />
+                  <div
+                    className="sr-only" // Hidden field for trapping bots
+                    aria-hidden="true"
+                  >
+                    <label htmlFor="alternate-email">
+                      Do not fill this out
+                    </label>
+                    <input
+                      id="alternate-email"
+                      name="alternate-email"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
                   <SubmitButton pending={isPending} />
                 </form>
               </OpacityReveal>
